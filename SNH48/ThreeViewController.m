@@ -79,7 +79,10 @@
             responseObject = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
         }
         NSLog(@"%@",responseObject);
-        self.message.text = responseObject[@"Message"];
+        if (self.message.text.length > 300) {
+            self.message.text = @"";
+        }
+        self.message.text = [NSString stringWithFormat:@"%@%@-%@",self.message.text,pid,responseObject[@"Message"]];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
         NSLog(@"%@",error);

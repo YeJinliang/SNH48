@@ -56,7 +56,7 @@ static NSString * tencentSig = @"2396268544";
         NSData * data = responseObject;
         NSString * dataString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         //        NSLog(@"%@",dataString);
-        
+        self.message.text = @"登录成功";
         NSArray * htmlArr = [dataString componentsSeparatedByString:@"\""];
         for (NSString * string in htmlArr) {
             if ([string hasPrefix:@"http://www.48.cn"]) {
@@ -77,7 +77,26 @@ static NSString * tencentSig = @"2396268544";
 }
 
 - (IBAction)clickBuy:(id)sender {
+    if (self.piaoID.text.length) {
+        NSString * pid = self.piaoID.text;
+        [self buyWithID:pid];
+    }
     
+    if (self.erpiaoID.text.length) {
+        NSString * pid = self.erpiaoID.text;
+        [self buyWithID:pid];
+    }
+    
+    if (self.sanpiaoID.text.length) {
+        NSString * pid = self.sanpiaoID.text;
+        [self buyWithID:pid];
+    }
+    
+    if (self.piaoID.text.length == 0 && self.erpiaoID.text.length == 0 && self.sanpiaoID.text.length == 0) {
+        self.message.text = @"输入票id";
+    }
+}
+- (void)buyWithID:(NSString *)pid{
     AFHTTPSessionManager * manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:@"http://shop.48.cn"]];
     //请求类型
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
@@ -92,14 +111,7 @@ static NSString * tencentSig = @"2396268544";
     }
     NSString * newCookies = [NSString stringWithFormat:@"%@route=%@; IESESSION=%@; pgv_pvi=%@; pgv_si=%@; __RequestVerificationToken=%@; tencentSig=%@; _qddamta_4006176598=3-0; _qdda=3-1.2dkq5o; _qddab=3-f4esk2.is7a6acx",userCookies,route,iesession,pgv_pvi,pgv_si,__RequestVerificationToken,tencentSig];
     [manager.requestSerializer setValue:newCookies forHTTPHeaderField:@"Cookie"];
-    NSString * pid;
-    if (self.piaoID.text.length) {
-        pid = self.piaoID.text;
-    }
-    else {
-        self.message.text = @"输入票id";
-        return;
-    }
+    
     NSDictionary * dic = @{@"id":pid,@"num":@"1",@"seattype":@"3",@"brand_id":@"2",@"r":@"0.6302288675552128"};
     [manager POST:@"/TOrder/add" parameters:dic progress:^(NSProgress * _Nonnull uploadProgress) {
         
@@ -108,7 +120,10 @@ static NSString * tencentSig = @"2396268544";
             responseObject = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
         }
         NSLog(@"%@",responseObject);
-        self.message.text = responseObject[@"Message"];
+        if (self.message.text.length > 100) {
+            self.message.text = @"";
+        }
+        self.message.text = [NSString stringWithFormat:@"%@%@-%@",self.message.text,pid,responseObject[@"Message"]];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
         NSLog(@"%@",error);

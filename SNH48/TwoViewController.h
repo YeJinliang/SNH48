@@ -19,5 +19,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *message;
 @property (weak, nonatomic) IBOutlet UITextField *piaoID;
+@property (weak, nonatomic) IBOutlet UITextField *erpiaoID;
+@property (weak, nonatomic) IBOutlet UITextField *sanpiaoID;
 - (IBAction)clickBuy:(id)sender;
 @end

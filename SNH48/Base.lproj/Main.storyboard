@@ -186,29 +186,46 @@
                                     <action selector="clickBuy:" destination="6JT-vV-0Pi" eventType="touchUpInside" id="ttr-ie-DAd"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="票id" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sn1-Q2-SEM">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="第一张票id" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sn1-Q2-SEM">
                                 <rect key="frame" x="20" y="176" width="202" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="提示" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V1S-xC-boM">
-                                <rect key="frame" x="20" y="214" width="560" height="21"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="第二张票id" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mmL-BQ-hmD">
+                                <rect key="frame" x="20" y="214" width="202" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="第三张票id" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="phg-eS-1E3">
+                                <rect key="frame" x="20" y="252" width="202" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="提示" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V1S-xC-boM">
+                                <rect key="frame" x="20" y="289" width="560" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="V1S-xC-boM" firstAttribute="trailing" secondItem="2nR-l5-pDA" secondAttribute="trailingMargin" id="Ozb-by-VJd"/>
+                            <constraint firstItem="V1S-xC-boM" firstAttribute="leading" secondItem="2nR-l5-pDA" secondAttribute="leadingMargin" id="ZU2-zT-M0U"/>
+                            <constraint firstItem="V1S-xC-boM" firstAttribute="top" secondItem="2nR-l5-pDA" secondAttribute="topMargin" constant="289" id="f76-ve-ZoR"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 1" id="bAU-Fq-nOh"/>
                     <connections>
                         <outlet property="authcode" destination="YRX-Gg-Ohy" id="xvG-7P-kCq"/>
                         <outlet property="codeText" destination="tuZ-g4-hbF" id="3qK-5W-mvb"/>
+                        <outlet property="erpiaoID" destination="mmL-BQ-hmD" id="wtL-tK-iiI"/>
                         <outlet property="login" destination="mGg-35-5uw" id="i8Z-8a-n2d"/>
                         <outlet property="loginid" destination="5Gx-Pa-klQ" id="cMR-xj-m6s"/>
                         <outlet property="message" destination="V1S-xC-boM" id="mG9-0d-GdZ"/>
                         <outlet property="password" destination="2Ww-SF-XtF" id="Y4c-YU-TCx"/>
                         <outlet property="piaoID" destination="sn1-Q2-SEM" id="W3n-s9-3VO"/>
+                        <outlet property="sanpiaoID" destination="phg-eS-1E3" id="FPS-6j-zz7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8UM-QN-nJA" userLabel="First Responder" sceneMemberID="firstResponder"/>
