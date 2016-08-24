@@ -314,6 +314,7 @@
 				TargetAttributes = {
 					B155DF671D6C5A1E002D21B9 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = WG7W8H6545;
 					};
 					B155DF801D6C5A1E002D21B9 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -542,6 +543,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = SNH48/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.samonkey.SNH48;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -556,6 +558,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = SNH48/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.samonkey.SNH48;
 				PRODUCT_NAME = "$(TARGET_NAME)";
