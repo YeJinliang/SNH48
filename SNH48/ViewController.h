@@ -8,8 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+#import "AFNetworking.h"
+
 @interface ViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UITextField *piaoID;
+@property (weak, nonatomic) IBOutlet UILabel *code;
+- (IBAction)click:(id)sender;
 
 @end
 
