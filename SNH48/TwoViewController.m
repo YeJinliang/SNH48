@@ -22,6 +22,7 @@ static NSString * tencentSig = @"2396268544";
 @interface TwoViewController ()
 
 @property (nonatomic ,strong) NSMutableDictionary * otherCookieDic;
+@property (nonatomic ,copy) NSString * seattype;
 
 @end
 
@@ -32,6 +33,7 @@ static NSString * tencentSig = @"2396268544";
     // Do any additional setup after loading the view.
     
     _otherCookieDic = [NSMutableDictionary new];
+    self.seattype = @"2";
     
     NSURL * url = [NSURL URLWithString:@"http://user.snh48.com/authcode/code.php"];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
@@ -96,6 +98,11 @@ static NSString * tencentSig = @"2396268544";
         self.message.text = @"输入票id";
     }
 }
+
+- (IBAction)changeType:(UISegmentedControl *)sender {
+    self.seattype = [NSString stringWithFormat:@"%ld",sender.selectedSegmentIndex + 2];
+    
+}
 - (void)buyWithID:(NSString *)pid{
     AFHTTPSessionManager * manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:@"http://shop.48.cn"]];
     //请求类型
@@ -112,7 +119,7 @@ static NSString * tencentSig = @"2396268544";
     NSString * newCookies = [NSString stringWithFormat:@"%@route=%@; IESESSION=%@; pgv_pvi=%@; pgv_si=%@; __RequestVerificationToken=%@; tencentSig=%@; _qddamta_4006176598=3-0; _qdda=3-1.2dkq5o; _qddab=3-f4esk2.is7a6acx",userCookies,route,iesession,pgv_pvi,pgv_si,__RequestVerificationToken,tencentSig];
     [manager.requestSerializer setValue:newCookies forHTTPHeaderField:@"Cookie"];
     
-    NSDictionary * dic = @{@"id":pid,@"num":@"1",@"seattype":@"3",@"brand_id":@"2",@"r":@"0.6302288675552128"};
+    NSDictionary * dic = @{@"id":pid,@"num":@"1",@"seattype":self.seattype,@"brand_id":@"2",@"r":@"0.6302288675552128"};
     [manager POST:@"/TOrder/add" parameters:dic progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {

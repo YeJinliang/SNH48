@@ -22,4 +22,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *erpiaoID;
 @property (weak, nonatomic) IBOutlet UITextField *sanpiaoID;
 - (IBAction)clickBuy:(id)sender;
+- (IBAction)changeType:(UISegmentedControl *)sender;
+
+
 @end
